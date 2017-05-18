@@ -21,7 +21,7 @@ RSpec.describe AddressBook do
 
   describe "#add_entry" do
 
-    it "adds an entry to entries" do
+    it "adds exactly one entry to entries" do
       book = AddressBook.new
       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
 
@@ -37,5 +37,16 @@ RSpec.describe AddressBook do
        expect(new_entry.phone_number).to eq('010.012.1815')
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
      end
+  end
+
+  describe "#remove_entry" do
+
+    it "removes exactly one entry from entries" do
+      book = AddressBook.new
+      book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+
+      expect(book.entries.size).to eq(0)
+    end
   end
 end
