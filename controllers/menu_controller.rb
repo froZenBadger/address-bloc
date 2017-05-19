@@ -13,7 +13,8 @@ class MenuContoller
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries  for an entry"
-    puts "5 - Exit"
+    puts "5 - View Entry Number n"
+    puts "6 - Exit"
     puts "Enter your selection: "
 
     selection = gets.to_i
@@ -36,6 +37,13 @@ class MenuContoller
         read_csv
         main_menu
       when 5
+        system "clear"
+        print "Entry number: "
+        users_num = Integer(gets) rescue false
+        view_entry_n(users_num) if users_num
+        puts "Sorry, that is not a valid input" if(!users_num)
+        main_menu
+      when 6
         puts "Good-bye!"
         # #8
         exit(0)
@@ -54,7 +62,11 @@ class MenuContoller
 
     system "clear"
     puts "End of entries"
+  end
 
+  def view_entry_n(n)
+    puts address_book.entries[n-1].to_s if n <= address_book.entries.count
+    puts "Sorry, there are not that many entries in the address book, add more!" if n > address_book.entries.count
   end
 
   def create_entry
