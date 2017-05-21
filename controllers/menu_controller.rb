@@ -13,8 +13,8 @@ class MenuContoller
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from csv"
-    puts "5 - View Entry Number n"
-    puts "6 - Exit"
+    # puts "5 - View Entry Number n"
+    puts "5 - Exit"
     puts "Enter your selection: "
 
     selection = gets.to_i
@@ -36,14 +36,14 @@ class MenuContoller
         system "clear"
         read_csv
         main_menu
+      # when 5
+      #   system "clear"
+      #   print "Entry number: "
+      #   users_num = Integer(gets) rescue false
+      #   view_entry_n(users_num) if users_num
+      #   puts "Sorry, that is not a valid input" if(!users_num)
+      #   main_menu
       when 5
-        system "clear"
-        print "Entry number: "
-        users_num = Integer(gets) rescue false
-        view_entry_n(users_num) if users_num
-        puts "Sorry, that is not a valid input" if(!users_num)
-        main_menu
-      when 6
         puts "Good-bye!"
         exit(0)
       else
@@ -121,7 +121,7 @@ class MenuContoller
         system "clear"
         puts "#{selection} is not a valid input"
         puts entry.to_s
-        search_submenu(entry) 
+        search_submenu(entry)
     end
   end
 
@@ -171,7 +171,7 @@ class MenuContoller
 
   def delete_entry(entry)
       address_book.entries.delete(entry)
-      puts "#{entry} has been deleted"
+      puts "#{entry}\n This entry has been deleted"
   end
 
   def edit_entry(entry)
@@ -189,4 +189,5 @@ class MenuContoller
     system "clear"
     puts "Updated entry:"
     puts entry
+  end
 end
