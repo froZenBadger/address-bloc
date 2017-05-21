@@ -13,8 +13,9 @@ class MenuContoller
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from csv"
-    # puts "5 - View Entry Number n"
+    #puts "5 - View Entry Number n"
     puts "5 - Exit"
+    puts "6 - Demolish all your entries"
     puts "Enter your selection: "
 
     selection = gets.to_i
@@ -46,6 +47,19 @@ class MenuContoller
       when 5
         puts "Good-bye!"
         exit(0)
+      when 6
+        system "clear"
+        print "Are you sure this will delete all your entries? Yes to continue: "
+        selection = gets.chomp
+        case selection
+          when 'Yes', 'yes'
+            address_book.entries.clear
+            system "clear"
+            puts "All your entries have been demolished"
+            main_menu
+          else
+            main_menu
+        end
       else
         system "clear"
         puts "Sorry, that is not a valid input"
